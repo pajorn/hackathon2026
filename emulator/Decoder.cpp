@@ -30,7 +30,7 @@ InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
     data.instr = instr;
     data.r1 = r1;
     data.r2 = r2;
-    data.address = address;
+    data.addrImm = address;
 
     return data;
 }
