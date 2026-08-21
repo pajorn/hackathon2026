@@ -1,3 +1,8 @@
+#pragma once
+#include <cstdint>
+
+using Word = uint16_t;
+
 class Memory {
 public:
     Memory();
