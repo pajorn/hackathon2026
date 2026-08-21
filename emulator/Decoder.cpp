@@ -5,6 +5,17 @@ Decoder::Decoder() {
     
 }
 
+void Decoder::fdeCycle(Memory* memory, Registers* registers) {
+    uint16_t instr1, instr2;
+    fetch(memory, registers, &instr1, &instr2);
+    InstructionData data = decodeInstruction(instr1, instr2);
+    execute(data);
+}
+
+void Decoder::fetch(Memory* memory, Registers* registers, uint16_t* instr1, uint16_t* instr2) {
+    // read from IP, increment IP
+}
+
 InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
     uint16_t instructionData  = interpretBigEndian(instr1);
     uint16_t opcode = (instructionData & 0xF800) >> 11;
@@ -22,6 +33,12 @@ InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
     data.address = address;
 
     return data;
+}
+
+void Decoder::execute(InstructionData data) {
+    switch (data.instr) {
+
+    }
 }
 
 uint16_t Decoder::interpretBigEndian(uint16_t a) {
