@@ -22,6 +22,6 @@ int main(void) {
 
     InstructionData data = decoder->decodeInstruction(instr1, instr2);
     printf("instruction: %i, r1: %i, r2: %i, address: %X\n",
-	    data.instr, data.r1, data.r2, data.address);
+	    data.instr, data.r1, data.r2, data.addrImm);
     return 0;
 }
