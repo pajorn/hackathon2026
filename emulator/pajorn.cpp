@@ -16,7 +16,12 @@ int main(void) {
     printf("%X %X\n", instr1, instr2);
 
     Decoder* decoder = new Decoder();
-    uint32_t out = decoder->interpretBigEndian(instr1, instr2);
+    uint32_t out = decoder->interpretBigEndian(instr1);
     printf("%X\n", out);
+    decoder->decodeInstruction(instr1, instr2);
+
+    InstructionData data = decoder->decodeInstruction(instr1, instr2);
+    printf("instruction: %i, r1: %i, r2: %i, address: %X\n",
+	    data.instr, data.r1, data.r2, data.address);
     return 0;
 }
