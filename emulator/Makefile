@@ -4,7 +4,15 @@ CXXFLAGS = -Wall
 all: emulator
 
 emulator: main.o Decoder.o Memory.o Stack.o Registers.o Renderer.o
-	$(CXX) $(CXXFLAGS) -o emulator main.o Memory.o
+	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Stack.o Registers.o Renderer.o
+
+pajorn: pajorn.cpp Decoder.o Memory.o Stack.o Registers.o Renderer.o
+	$(CXX) $(CXXFLAGS) -c pajorn.cpp
+	$(CXX) $(CXXFLAGS) -o pajorn pajorn.o Decoder.o Memory.o Stack.o Registers.o Renderer.o
+
+josiah: josiah.cpp Decoder.o Memory.o Stack.o Registers.o Renderer.o
+	$(CXX) $(CXXFLAGS) -c josiah.cpp
+	$(CXX) $(CXXFLAGS) -o josiah josiah.o Decoder.o Memory.o Stack.o Registers.o Renderer.o
 
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
