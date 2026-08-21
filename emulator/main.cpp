@@ -2,7 +2,7 @@
 //includes here
 
 int main(void) {
-    Memory* memory = new Memory();
+    // Memory* memory = new Memory();
 
     return 0;
 }

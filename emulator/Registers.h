@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cstdint>
 
 class Registers {
@@ -10,8 +12,11 @@ public:
     void setIP(uint16_t val);
     uint16_t getIP();
 
+    // SP points to in use slot
     void setSP(uint16_t val);
     uint16_t getSP();
+    void incrementSP();
+    void decrementSP();
 
 private:
     uint16_t* generalPurpose;

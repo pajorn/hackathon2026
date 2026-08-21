@@ -34,3 +34,11 @@ uint16_t Registers::getSP() {
     return stackPointer;
 }
 
+void Registers::incrementSP() {
+    stackPointer += 1;
+}
+
+void Registers::decrementSP() {
+    stackPointer -= 1;
+}
+
