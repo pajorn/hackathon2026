@@ -7,7 +7,6 @@ public:
 private:
     Decoder* decoder;
     Memory* memory;
-    Stack* stack;
     Registers* registers;
-    Renderer* renderer;
+    GPU* gpu;
 };

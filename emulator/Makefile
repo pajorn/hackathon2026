@@ -3,16 +3,16 @@ CXXFLAGS = -Wall
 
 all: emulator
 
-emulator: main.o Decoder.o Memory.o Registers.o Renderer.o
-	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Registers.o Renderer.o
+emulator: main.o Decoder.o Memory.o Registers.o GPU.o
+	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Registers.o GPU.o
 
-pajorn: pajorn.cpp Decoder.o Memory.o Registers.o Renderer.o
+pajorn: pajorn.cpp Decoder.o Memory.o Registers.o GPU.o
 	$(CXX) $(CXXFLAGS) -c pajorn.cpp
-	$(CXX) $(CXXFLAGS) -o pajorn pajorn.o Decoder.o Memory.o Registers.o Renderer.o
+	$(CXX) $(CXXFLAGS) -o pajorn pajorn.o Decoder.o Memory.o Registers.o GPU.o
 
-josiah: josiah.cpp Decoder.o Memory.o Registers.o Renderer.o
+josiah: josiah.cpp Decoder.o Memory.o Registers.o GPU.o
 	$(CXX) $(CXXFLAGS) -c josiah.cpp
-	$(CXX) $(CXXFLAGS) -o josiah josiah.o Decoder.o Memory.o Registers.o Renderer.o
+	$(CXX) $(CXXFLAGS) -o josiah josiah.o Decoder.o Memory.o Registers.o GPU.o
 
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -26,8 +26,8 @@ Memory.o: Memory.cpp Memory.h
 Registers.o: Registers.cpp Registers.h
 	$(CXX) $(CXXFLAGS) -c Registers.cpp Registers.h
 
-Renderer.o: Renderer.cpp Renderer.h
-	$(CXX) $(CXXFLAGS) -c Renderer.cpp Renderer.h
+GPU.o: GPU.cpp GPU.h
+	$(CXX) $(CXXFLAGS) -c GPU.cpp GPU.h
 
 .PHONY: clean
 
