@@ -14,7 +14,7 @@ Memory::~Memory() {
     free(cells_);
 }
 
-Word Memory::read(uint16_t address) const {
+Word Memory::read(uint16_t address) {
     return cells_[address];
 }
 
