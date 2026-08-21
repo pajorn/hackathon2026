@@ -1,0 +1,4 @@
+class Computer {
+public:
+    Computer();
+};
