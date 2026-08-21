@@ -8,7 +8,7 @@ public:
     Memory();
     ~Memory();
 
-    Word read(uint16_t address) const;
+    Word read(uint16_t address);
     void write(uint16_t address, Word value);
     void clear();
 private:

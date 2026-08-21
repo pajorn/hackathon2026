@@ -12,7 +12,7 @@ struct InstructionData {
     Instruction instr;
     uint8_t r1;
     uint8_t r2;
-    uint16_t address;
+    uint16_t addrImm; // address or immediate. depends on instr
 };
 
 // fetch decode execute

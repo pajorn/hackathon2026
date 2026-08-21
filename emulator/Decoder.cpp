@@ -18,7 +18,7 @@ void Decoder::fetch(Memory* memory, Registers* registers, uint16_t* instr1, uint
 
 InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
     uint16_t instructionData  = interpretBigEndian(instr1);
-    uint16_t opcode = (instructionData & 0xF800) >> 11;
+    uint16_t opcode = (instructionData & 0xFC00) >> 10;
     Instruction instr = static_cast<Instruction>((uint8_t)opcode);
     uint16_t address = instr2;
     uint8_t r1 = (instructionData & 0x00F0) >> 4;
