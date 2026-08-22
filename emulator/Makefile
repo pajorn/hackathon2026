@@ -1,5 +1,5 @@
 CXX = g++
-// CXXFLAGS = -Wall // old
+// CXXFLAGS = -Wall
 CXXFLAGS = -Wall $(shell pkg-config --cflags sdl2)
 LDFLAGS = $(shell pkg-config --libs sdl2)
 
@@ -11,11 +11,11 @@ emulator: main.o Decoder.o Memory.o Registers.o GPU.o
 
 pajorn: pajorn.cpp Decoder.o Memory.o Registers.o GPU.o
 	$(CXX) $(CXXFLAGS) -c pajorn.cpp
-	$(CXX) $(CXXFLAGS) -o pajorn pajorn.o Decoder.o Memory.o Registers.o GPU.o
+	$(CXX) $(CXXFLAGS) -o pajorn pajorn.o Decoder.o Memory.o Registers.o GPU.o $(LDFLAGS)
 
 josiah: josiah.cpp Decoder.o Memory.o Registers.o GPU.o
 	$(CXX) $(CXXFLAGS) -c josiah.cpp
-	$(CXX) $(CXXFLAGS) -o josiah josiah.o Decoder.o Memory.o Registers.o GPU.o
+	$(CXX) $(CXXFLAGS) -o josiah josiah.o Decoder.o Memory.o Registers.o GPU.o $(LDFLAGS)
 
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
