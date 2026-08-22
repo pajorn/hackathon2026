@@ -27,3 +27,6 @@
 |xor r1, r2 | r1 = r1 ^ r2
 |lsl r1, 0x???? | r1 = r1 << 0x????
 |lsr r1, 0x???? | r1 = r1 >> 0x????
+
+## Pixel Format
+2 bytes. xrrr rrgg gggb bbbb
