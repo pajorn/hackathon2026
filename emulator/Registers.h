@@ -11,6 +11,7 @@ public:
 
     void setIP(uint16_t val);
     uint16_t getIP();
+    void incrementIP();
 
     // SP points to in use slot
     void setSP(uint16_t val);

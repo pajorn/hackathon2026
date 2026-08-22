@@ -38,7 +38,7 @@ public:
 
     // takes the result from decodeInstruction, switches to the corresponding
     // functions via InstructionData.instr
-    void execute(InstructionData data);
+    void execute(InstructionData data, Memory* memory, Registers* registers);
 
 //private:
     // instructions are 4 bytes. First two are instruction related and big

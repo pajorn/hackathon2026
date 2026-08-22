@@ -9,7 +9,7 @@ void Decoder::fdeCycle(Memory* memory, Registers* registers) {
     uint16_t instr1, instr2;
     fetch(memory, registers, &instr1, &instr2);
     InstructionData data = decodeInstruction(instr1, instr2);
-    execute(data);
+    execute(data, memory, registers);
 }
 
 void Decoder::fetch(Memory* memory, Registers* registers, uint16_t* instr1, uint16_t* instr2) {
@@ -35,8 +35,31 @@ InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
     return data;
 }
 
-void Decoder::execute(InstructionData data) {
+void Decoder::execute(InstructionData data, Memory* mem, Registers* reg) {
+    reg->incrementIP();
+
     switch (data.instr) {
+	case Operation::Move:
+	    reg->setGP(data.r1, reg->getGP(data.r2));
+	    break;
+	case Operation::Load:
+	    reg->setGP(data.r1, mem->read(reg->getGP(data.r2)));
+	    break;
+	case Operation::Store:
+	    mem->write(reg->getGP(data.r2), reg->getGP(data.r1));
+	    break;
+	case Operation::Jump:
+	    reg->setIP(data.addrImm);
+	    break;
+	case Operation::Push:
+	    mem->push(reg->getGP(data.r1));
+	    break;
+	case Operation::Pop:
+	    reg->setGP(data.r1, mem->pop());
+	    break;
+	case Operation::LoadImmediate:
+	    reg->setGP(data.r1, data.addrImm);
+	    break;
     }
 }
 

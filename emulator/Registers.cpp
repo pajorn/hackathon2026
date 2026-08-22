@@ -22,6 +22,10 @@ void Registers::setIP(uint16_t val) {
     instructionPointer = val;
 }
 
+void Registers::incrementIP() {
+    instructionPointer += 2;
+}
+
 uint16_t Registers::getIP() {
     return instructionPointer;
 }
