@@ -26,7 +26,7 @@ public:
 private:
     Registers* reg;
 
-    static const size_t SIZE = 0xFFFF; // 2^16 
+    static const size_t SIZE = 0x10000;
 
     // each region has size 0x4000
     static const size_t SIZE_REGIONS = 0x4000;

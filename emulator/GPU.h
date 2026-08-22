@@ -12,6 +12,7 @@ public:
     static constexpr int HEIGHT = 128;
     static constexpr int PIXEL_COUNT = WIDTH*HEIGHT;
 
+    const uint16_t* getBuffer() {return buffer_;}
     explicit GPU(int scale = 4);
     ~GPU();
 
