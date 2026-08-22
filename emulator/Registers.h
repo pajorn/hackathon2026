@@ -25,6 +25,8 @@ public:
     void setEqual(bool status);
     bool getEqual();
 
+    void debugPrint();
+
 private:
     uint16_t* generalPurpose;
     uint16_t instructionPointer;

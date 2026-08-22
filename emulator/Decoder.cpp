@@ -26,8 +26,8 @@ InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
     uint16_t address = instr2;
     uint8_t r1 = (instructionData & 0x00F0) >> 4;
     uint8_t r2 = instructionData & 0x000F;
-    // printf("instructionData: %X, r1: %i, r2: %i, instruction: %i, address: %X\n",
-	// instructionData, r1, r2, instr, address);
+    printf("instructionData: %04X, r1: %02i, r2: %02i, instruction: %02i, addr/imm: %04X\n",
+	instructionData, r1, r2, instr, address);
 
     InstructionData data{};
     data.instr = instr;

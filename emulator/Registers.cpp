@@ -1,4 +1,5 @@
 #include "Registers.h"
+#include <cstdio>
 
 Registers::Registers() {
     generalPurpose = new uint16_t[16];
@@ -64,5 +65,13 @@ void Registers::setEqual(bool status) {
 
 bool Registers::getEqual() {
     return equalFlag;
+}
+
+void Registers::debugPrint() {
+    for (int i = 0; i < 16; i++) {
+	printf("r%02i:%04X ", i, generalPurpose[i]);
+    }
+    printf("IP: %04X, SP: %04X, Negative: %i, Equal: %i\n", instructionPointer,
+	    stackPointer, negativeFlag, equalFlag);
 }
 
