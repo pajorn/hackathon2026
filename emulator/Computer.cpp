@@ -6,6 +6,7 @@ Computer::Computer() {
     registers = new Registers();
     memory = new Memory(registers);
     gpu = new GPU();
+    gpu->init();
 }
 
 void Computer::tick() {
