@@ -1,5 +1,5 @@
 CXX = g++
-// CXXFLAGS = -Wall // old
+# CXXFLAGS = -Wall // old
 CXXFLAGS = -Wall $(shell pkg-config --cflags sdl2)
 LDFLAGS = $(shell pkg-config --libs sdl2)
 
