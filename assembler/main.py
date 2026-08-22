@@ -121,9 +121,15 @@ def instr_bytes(parsed: tuple[str, list[str]], targets: dict,
     if len(operands) == 2 and operands[1][0:2] == "0x":
         isHex[1] = True
     if len(operands) >= 1 and operands[0][0] == "r":
-        r1 = int(operands[0][1:])
+        try:
+            r1 = int(operands[0][1:])
+        except ValueError:
+            pass
     if len(operands) == 2 and operands[1][0] == "r":
-        r2 = int(operands[1][1:])
+        try:
+            r2 = int(operands[1][1:])
+        except ValueError:
+            pass
     if len(operands) >= 1 and isHex[0]:
         addrImm1 = int(operands[0], 16)
     if len(operands) == 2 and isHex[1]:
