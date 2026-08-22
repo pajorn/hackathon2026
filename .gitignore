@@ -6,3 +6,4 @@ pajorn
 josiah
 *.pch
 *.bin
+.DS_Store
