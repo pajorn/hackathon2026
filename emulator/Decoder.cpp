@@ -14,9 +14,9 @@ void Decoder::fdeCycle(Memory* memory, Registers* registers) {
 
 void Decoder::fetch(Memory* memory, Registers* registers, uint16_t* instr1, uint16_t* instr2) {
     // read from IP, increment IP
-    instr1 = mem->read(reg->getIP());
-    instr1 = mem->read(reg->getIP() + 1);
-    reg->incrementIP();
+    *instr1 = memory->read(registers->getIP());
+    *instr2 = memory->read(registers->getIP() + 1);
+    registers->incrementIP();
 }
 
 InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
@@ -60,6 +60,50 @@ void Decoder::execute(InstructionData data, Memory* mem, Registers* reg) {
 	    break;
 	case Operation::LoadImmediate:
 	    reg->setGP(data.r1, data.addrImm);
+	    break;
+	case Operation::Call:
+	    mem->push(reg->getIP());
+	    reg->setIP(data.addrImm);
+	    break;
+	case Operation::Return:
+	    reg->setIP(mem->pop());
+	    break;
+	case Operation::Compare:
+	    reg->setEqual(reg->getGP(data.r1) == reg->getGP(data.r2));
+	    reg->setNegative(reg->getGP(data.r2) > reg->getGP(data.r1));
+	    break;
+	case Operation::BranchEqual:
+	    if (reg->getEqual()) {
+		reg->setIP(data.addrImm);
+	    }
+	    break;
+	case Operation::BranchLessThan:
+	    if (reg->getNegative()) {
+		reg->setIP(data.addrImm);
+	    }
+	    break;
+	case Operation::Add:
+	    reg->setGP(data.r1, reg->getGP(data.r1) + reg->getGP(data.r2));
+	    break;
+	case Operation::Subtract:
+	    reg->setGP(data.r1, reg->getGP(data.r1) - reg->getGP(data.r2));
+	    reg->setEqual(reg->getGP(data.r1) == reg->getGP(data.r2));
+	    reg->setNegative(reg->getGP(data.r2) > reg->getGP(data.r1));
+	    break;
+	case Operation::And:
+	    reg->setGP(data.r1, reg->getGP(data.r1) & reg->getGP(data.r2));
+	    break;
+	case Operation::Or:
+	    reg->setGP(data.r1, reg->getGP(data.r1) | reg->getGP(data.r2));
+	    break;
+	case Operation::ExclusiveOr:
+	    reg->setGP(data.r1, reg->getGP(data.r1) ^ reg->getGP(data.r2));
+	    break;
+	case Operation::ShiftLeft:
+	    reg->setGP(data.r1, reg->getGP(data.r1) << data.addrImm);
+	    break;
+	case Operation::ShiftRight:
+	    reg->setGP(data.r1, reg->getGP(data.r1) >> data.addrImm);
 	    break;
     }
 }

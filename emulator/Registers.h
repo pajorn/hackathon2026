@@ -20,9 +20,9 @@ public:
     void decrementSP();
 
     // status
-    void setNegative();
+    void setNegative(bool status);
     bool getNegative();
-    void setEqual();
+    void setEqual(bool status);
     bool getEqual();
 
 private:

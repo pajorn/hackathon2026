@@ -13,7 +13,19 @@ enum class Operation : uint8_t {
     Jump = 4,
     Push = 5,
     Pop = 6,
-    LoadImmediate = 7
+    LoadImmediate = 7,
+    Call = 8,
+    Return = 9,
+    Compare = 10,
+    BranchEqual = 11,
+    BranchLessThan = 12,
+    Add = 13,
+    Subtract = 14,
+    And = 15,
+    Or = 16,
+    ExclusiveOr = 17,
+    ShiftLeft = 18,
+    ShiftRight = 19
 };
 
 struct InstructionData {
