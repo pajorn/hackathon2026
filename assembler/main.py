@@ -37,7 +37,6 @@ def parse_instr(instr: str):
         parts = instr.split(" ")
         operation = parts[0]
         operands = parts[1:]
-        print(len(operands))
         return (operation, operands)
 
 
