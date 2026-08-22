@@ -25,6 +25,10 @@ public:
     void exportPixelBuffer(uint16_t* out);
 
     static const size_t SIZE_REGIONS = 0x4000; // works better to access for Computer
+
+    // visualiser fucking shit
+    void decayActivity();
+    const uint8_t* activity() {return activity_;}
 private:
     Registers* reg;
 
@@ -37,6 +41,8 @@ private:
     static const size_t PIXEL_OFFSET = 0xC000;
     
     Word* cells_;
+
+    uint8_t* activity_;
 
     // NO COPYING
     Memory(const Memory&) = delete;

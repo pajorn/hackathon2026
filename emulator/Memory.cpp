@@ -8,6 +8,9 @@ Memory::Memory(Registers* reg) {
     //printf("memory contructor\n");
     cells_ = (Word*)malloc(SIZE * sizeof(Word));
     memset(cells_, 0 , SIZE * sizeof(Word));
+    activity_ = (uint8_t*)malloc(SIZE);
+    memset(activity_, 0, SIZE);
+
 
     this->reg = reg;
     // init sp to top of stack space (0xC000)
@@ -18,6 +21,7 @@ Memory::Memory(Registers* reg) {
 
 Memory::~Memory() {
     free(cells_);
+    free(activity_);
 }
 
 Word Memory::read(uint16_t address) {
@@ -26,6 +30,12 @@ Word Memory::read(uint16_t address) {
 
 void Memory::write(uint16_t address, Word value) {
     cells_[address] = value;
+    activity_[address] = 255;
+}
+
+void Memory::decayActivity() {
+    for (int i = 0; i < SIZE; i++)
+        activity_[i] -= activity_[i] >> 3;
 }
 
 void Memory::push(uint16_t val) {
@@ -41,6 +51,7 @@ uint16_t Memory::pop() {
 
 void Memory::clear() {
     memset(cells_, 0, SIZE * sizeof(Word));
+    memset(activity_, 0, SIZE);
 }
 
 void Memory::loadProgram(uint16_t* progmem) {

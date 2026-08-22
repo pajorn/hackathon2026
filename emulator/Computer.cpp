@@ -6,7 +6,12 @@ Computer::Computer() {
     registers = new Registers();
     memory = new Memory(registers);
     gpu = new GPU();
+<<<<<<< HEAD
     gpu->init();
+=======
+    vis = new Visualiser(2);
+    vis->init();
+>>>>>>> 9e321fc (idgaf)
 }
 
 void Computer::tick() {
@@ -16,6 +21,8 @@ void Computer::tick() {
         frameCycles_ = 0;
         gpu->pollEvents();
         gpu->drawFrame(memory);
+        memory->decayActivity();
+        vis->drawFrame(*registers, *memory, false);
     }
 }
 

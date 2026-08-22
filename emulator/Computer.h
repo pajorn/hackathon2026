@@ -4,6 +4,7 @@
 #include "Memory.h"
 #include "Registers.h"
 #include "GPU.h"
+#include "Visualiser.h"
 
 class Computer {
 public:
@@ -17,8 +18,8 @@ public:
 private:
     int frameCycles_ = 0; // cycles counter PER frame
     static const int FRAME_CYCLES = 5000; // basically clock rate
-    
 
+    Visualiser* vis;
     Decoder* decoder;
     Memory* memory;
     Registers* registers;
