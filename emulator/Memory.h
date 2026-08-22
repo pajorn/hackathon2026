@@ -23,13 +23,14 @@ public:
 
     // copies the pixel buffer to out. out must have size 0x4000
     void exportPixelBuffer(uint16_t* out);
+
+    static const size_t SIZE_REGIONS = 0x4000; // works better to access for Computer
 private:
     Registers* reg;
 
     static const size_t SIZE = 0x10000;
 
     // each region has size 0x4000
-    static const size_t SIZE_REGIONS = 0x4000;
     static const size_t PROG_OFFSET = 0x0000;
     static const size_t HEAP_OFFSET = 0x4000;
     static const size_t STACK_OFFSET = 0x8000;
