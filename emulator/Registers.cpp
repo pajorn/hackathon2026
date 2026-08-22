@@ -46,3 +46,19 @@ void Registers::decrementSP() {
     stackPointer -= 1;
 }
 
+void Registers::setNegative(bool status) {
+    negativeFlag = status;
+}
+
+bool Registers::getNegative() {
+    return negativeFlag;
+}
+
+void Registers::setEqual(bool status) {
+    equalFlag = status;
+}
+
+bool Registers::getEqual() {
+    return equalFlag;
+}
+

@@ -19,8 +19,16 @@ public:
     void incrementSP();
     void decrementSP();
 
+    // status
+    void setNegative();
+    bool getNegative();
+    void setEqual();
+    bool getEqual();
+
 private:
     uint16_t* generalPurpose;
     uint16_t instructionPointer;
     uint16_t stackPointer;
+    bool negativeFlag;
+    bool equalFlag;
 };
