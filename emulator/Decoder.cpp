@@ -14,6 +14,9 @@ void Decoder::fdeCycle(Memory* memory, Registers* registers) {
 
 void Decoder::fetch(Memory* memory, Registers* registers, uint16_t* instr1, uint16_t* instr2) {
     // read from IP, increment IP
+    instr1 = mem->read(reg->getIP());
+    instr1 = mem->read(reg->getIP() + 1);
+    reg->incrementIP();
 }
 
 InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
@@ -36,8 +39,6 @@ InstructionData Decoder::decodeInstruction(uint16_t instr1, uint16_t instr2) {
 }
 
 void Decoder::execute(InstructionData data, Memory* mem, Registers* reg) {
-    reg->incrementIP();
-
     switch (data.instr) {
 	case Operation::Move:
 	    reg->setGP(data.r1, reg->getGP(data.r2));
