@@ -158,8 +158,8 @@ def assemble(fname):
     binary.tofile(ofile)
     ofile.close()
     
-    print(f"Done. Uses 0x{instructionOffset} of 0x4000 "
-          f"bytes ({instructionOffset / 0x4000*100:.1f}%). File: {oname}")
+    print(f"Done. Uses 0x{instructionOffset:04X} of 0x4000 "
+          f"(2 byte) cells ({instructionOffset / 0x4000*100:.1f}%). File: {oname}")
 
 
 if __name__ == "__main__":
