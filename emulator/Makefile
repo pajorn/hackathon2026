@@ -1,10 +1,13 @@
 CXX = g++
-CXXFLAGS = -Wall
+// CXXFLAGS = -Wall // old
+CXXFLAGS = -Wall $(shell pkg-config --cflags sdl2)
+LDFLAGS = $(shell pkg-config --libs sdl2)
+
 
 all: emulator
 
 emulator: main.o Decoder.o Memory.o Registers.o GPU.o
-	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Registers.o GPU.o
+	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Registers.o GPU.o $(LDFLAGS)
 
 pajorn: pajorn.cpp Decoder.o Memory.o Registers.o GPU.o
 	$(CXX) $(CXXFLAGS) -c pajorn.cpp
