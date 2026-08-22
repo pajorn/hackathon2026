@@ -104,6 +104,8 @@ void Decoder::execute(InstructionData data, Memory* mem, Registers* reg) {
 	case Operation::ShiftRight:
 	    reg->setGP(data.r1, reg->getGP(data.r1) >> data.addrImm);
 	    break;
+	case Operation::Multiply:
+	    reg->setGP(data.r1, reg->getGP(data.r1) * reg->getGP(data.r2));
     }
 }
 
