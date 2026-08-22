@@ -5,14 +5,19 @@
 #include "Memory.h"
 #include "Registers.h"
 
-enum class Instruction : uint8_t {
-    Move = 0,
-    Load = 1,
-    Store = 2
+enum class Operation : uint8_t {
+    NOP = 0,
+    Move = 1,
+    Load = 2,
+    Store = 3,
+    Jump = 4,
+    Push = 5,
+    Pop = 6,
+    LoadImmediate = 7
 };
 
 struct InstructionData {
-    Instruction instr;
+    Operation instr;
     uint8_t r1;
     uint8_t r2;
     uint16_t addrImm; // address or immediate. depends on instr
