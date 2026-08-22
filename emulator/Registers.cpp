@@ -37,6 +37,7 @@ uint16_t Registers::getIP() {
 
 void Registers::setSP(uint16_t val) {
     stackPointer = val;
+    // printf("stackPointer changed to %04X\n", stackPointer);
 }
 
 uint16_t Registers::getSP() {
@@ -44,11 +45,11 @@ uint16_t Registers::getSP() {
 }
 
 void Registers::incrementSP() {
-    stackPointer += 1;
+    setSP(getSP() + 1);
 }
 
 void Registers::decrementSP() {
-    stackPointer -= 1;
+    setSP(getSP() - 1);
 }
 
 void Registers::setNegative(bool status) {
