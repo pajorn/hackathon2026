@@ -6,9 +6,10 @@
 #include "Registers.h"
 
 enum class Instruction : uint8_t {
-    Move = 0,
-    Load = 1,
-    Store = 2
+    NOP = 0,
+    Move = 1,
+    Load = 2,
+    Store = 3
 };
 
 struct InstructionData {
