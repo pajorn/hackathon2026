@@ -37,6 +37,7 @@ def parse_instr(instr: str):
         parts = instr.split(" ")
         operation = parts[0]
         operands = parts[1:]
+        print(len(operands))
         return (operation, operands)
 
 
@@ -139,10 +140,22 @@ def instr_bytes(parsed: tuple[str, list[str]], targets: dict,
     return (instr1, instr2)
 
 
+def remove_comments(l):
+    l = [s for s in l if s[0] != ";"] # whole line comments
+    out = list()
+    for s in l:
+        if ";" not in s:
+            out.append(s)
+        else:
+            out.append(s[:s.find(";")].rstrip())
+    return out
+
+
 def assemble(fname):
     oname = fname[:-3] + "bin"
     instructionOffset = 0 # in words
     instrs = read_file(fname)
+    instrs = remove_comments(instrs)
     labels = dict()
     labelTargets = dict()
 
