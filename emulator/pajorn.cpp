@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 	printf("%02X ", a[i]);
     printf("\n");
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 15; i++) {
 	computer.tick();
     }
 
