@@ -58,6 +58,37 @@ def set_addrImm(opr: str, r1: int, r2: int, addrImm1: int,
         pass
     elif opr == "ldi":
         out = addrImm2
+    elif opr == "call":
+        out = addrImm1
+        if not isHex[0]:
+            add_forward_ref_target(address, operands[0], targets)
+    elif opr == "ret":
+        pass
+    elif opr == "cmp":
+        pass
+    elif opr == "breq":
+        out = addrImm1
+        if not isHex[0]:
+            add_forward_ref_target(address, operands[0], targets)
+    elif opr == "brlt":
+        out = addrImm1
+        if not isHex[0]:
+            add_forward_ref_target(address, operands[0], targets)
+    elif opr == "add":
+        pass
+    elif opr == "sub":
+        pass
+    elif opr == "and":
+        pass
+    elif opr == "or":
+        pass
+    elif opr == "xor":
+        pass
+    elif opr == "lsl":
+        out = addrImm2
+    elif opr == "lsr":
+        out = addrImm2
+
     return out
 
 
@@ -127,8 +158,8 @@ def assemble(fname):
     binary.tofile(ofile)
     ofile.close()
     
-    print(f"Done. Uses 0x{instructionOffset} of 0x4000 bytes ("
-          f"{instructionOffset / 0x4000*100:.1f}%)")
+    print(f"Done. Uses 0x{instructionOffset} of 0x4000 "
+          f"bytes ({instructionOffset / 0x4000*100:.1f}%). File: {oname}")
 
 
 if __name__ == "__main__":

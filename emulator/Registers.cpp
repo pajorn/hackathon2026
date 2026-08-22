@@ -2,6 +2,10 @@
 
 Registers::Registers() {
     generalPurpose = new uint16_t[16];
+    instructionPointer = 0;
+    stackPointer = 0;
+    negativeFlag = false;
+    equalFlag = false;
 }
 
 void Registers::setGP(uint8_t i, uint16_t val) {
