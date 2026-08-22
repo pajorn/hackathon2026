@@ -5,8 +5,8 @@ LDFLAGS = $(shell pkg-config --libs sdl2)
 
 all: emulator
 
-emulator: main.o Decoder.o Memory.o Registers.o GPU.o Computer.o
-	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Registers.o GPU.o Computer.o $(LDFLAGS)
+emulator: main.o Decoder.o Memory.o Registers.o GPU.o Computer.o Visualiser.o
+	$(CXX) $(CXXFLAGS) -o emulator main.o Decoder.o Memory.o Registers.o GPU.o Computer.o Visualiser.o $(LDFLAGS) 
 
 pajorn: pajorn.cpp Decoder.o Memory.o Registers.o GPU.o Computer.o
 	$(CXX) $(CXXFLAGS) -c pajorn.cpp
@@ -33,6 +33,10 @@ GPU.o: GPU.cpp GPU.h
 
 Computer.o: Computer.cpp Computer.h
 	$(CXX) $(CXXFLAGS) -c Computer.cpp Computer.h
+
+Visualiser.o: Visualiser.cpp Visualiser.h
+	$(CXX) $(CXXFLAGS) -c Visualiser.cpp
+
 
 .PHONY: clean
 
