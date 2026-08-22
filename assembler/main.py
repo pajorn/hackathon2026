@@ -9,7 +9,19 @@ operations = {"nop": 0,
               "jmp": 4,
               "push": 5,
               "pop": 6,
-              "ldi": 7}
+              "ldi": 7,
+              "call": 8,
+              "ret": 9,
+              "cmp": 10,
+              "breq": 11,
+              "brlt": 12,
+              "add": 13,
+              "sub": 14,
+              "and": 15,
+              "or": 16,
+              "xor": 17,
+              "lsl": 18,
+              "lsr": 19}
 
 
 def read_file(fname: str) -> list[str]:
