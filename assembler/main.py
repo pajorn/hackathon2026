@@ -25,7 +25,6 @@ def parse_instr(instr: str):
         parts = instr.split(" ")
         operation = parts[0]
         operands = parts[1:]
-        print(f"operation: {operation}, operands: {operands}")
         return (operation, operands)
 
 
@@ -99,7 +98,6 @@ def instr_bytes(parsed: tuple[str, list[str]], targets: dict,
 
 def assemble(fname):
     oname = fname[:-3] + "bin"
-    print(f"oname: {oname}")
     instructionOffset = 0 # in words
     instrs = read_file(fname)
     labels = dict()
@@ -120,7 +118,6 @@ def assemble(fname):
         else:
             labels[opr[:-1]] = instructionOffset
 
-    print(labels)
     # solve forward (actually, all) references
     for key in labelTargets:
         for offset in labelTargets[key]:
@@ -129,6 +126,9 @@ def assemble(fname):
     ofile = open(oname, "wb")
     binary.tofile(ofile)
     ofile.close()
+    
+    print(f"Done. Uses 0x{instructionOffset} of 0x4000 bytes ("
+          f"{instructionOffset / 0x4000*100:.1f}%)")
 
 
 if __name__ == "__main__":
