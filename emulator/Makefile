@@ -37,4 +37,4 @@ Computer.o: Computer.cpp Computer.h
 .PHONY: clean
 
 clean:
-	rm -f *.o emulator
+	rm -f *.o *.gch *.pch emulator
