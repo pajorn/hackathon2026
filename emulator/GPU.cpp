@@ -50,9 +50,14 @@ void GPU::pollEvents() {
                 quit_ = true;
                 break;
             case SDL_KEYDOWN:
-                if (e.key.keysym.sym == SDLK_ESCAPE)
-                    quit_ = true;
-                break;
+                if (e.key.repeat) break;
+                switch (e.key.keysym.sym) {
+                    case SDLK_ESCAPE: quit_ = true; break;
+                    case SDLK_SPACE: pause = true; break;
+                    case SDLK_PERIOD: step = true; break;
+                    case SDLK_r: restart = true; break;
+                    default:break;
+                }
             default:
                 break;
         }

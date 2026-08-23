@@ -61,3 +61,11 @@
 │   ├── screen.asm \
 │   └── test.asm \
 └── README.md 
+
+## controls
+| key     | function                      |
+|---------|-------------------------------|
+| `space` | pause/resume                  |
+| `.`     | step one instruction (paused) |
+| `r`     | restart program               |
+| `esc`   | quit                          |

@@ -18,6 +18,10 @@ public:
 private:
     int frameCycles_ = 0; // cycles counter PER frame
     static const int FRAME_CYCLES = 5000; // basically clock rate
+                                          //
+    bool paused_ = false;
+    uint16_t program_[Memory::SIZE_REGIONS];
+    void reset();
 
     Visualiser* vis;
     Decoder* decoder;
