@@ -3,9 +3,12 @@ ldi r1, 0x0001
 ldi r2, 0x0080	; size
 ldi r3, 0x0000	; row
 ldi r4, 0x0000	; col
+ldi r7, 0x4000	; colours
 
 
 ldi r15, 0x7FFF
+
+call make_colours
 row:
 col:
 ; calc offset
@@ -15,7 +18,10 @@ add r6, r4
 add r6, r0
 
 call calc_pixel
-st r5, r6
+add r7, r5
+ld r8, r7
+sub r7, r5
+st r8, r6
 
 ; end col
 add r4, r1
@@ -31,6 +37,7 @@ brlt row
 
 loop:
 jmp loop
+
 
 
 calc_pixel:	; this function was co-written with an LLM
@@ -64,7 +71,7 @@ xor r8, r8
 xor r9, r9
 xor r10, r10
 
-ldi r11, 0x001F
+ldi r11, 0x003F
 
 start:
 
@@ -142,4 +149,273 @@ pop r8
 pop r7
 pop r6
 
+ret
+
+
+make_colours:
+push r0
+push r1
+push r2
+
+ldi r0, 0x4000
+ldi r1, 0x0001
+
+ldi r2, 0x0000
+st r2, r0
+add r0, r1
+
+ldi r2, 0x1008
+st r2, r0
+add r0, r1
+
+ldi r2, 0x200F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x3017
+st r2, r0
+add r0, r1
+
+ldi r2, 0x401F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x301F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x201F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x101F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x001F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x009F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x011F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x019F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x021F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x029F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x031F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x039F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x03FF
+st r2, r0
+add r0, r1
+
+ldi r2, 0x03F8
+st r2, r0
+add r0, r1
+
+ldi r2, 0x03F0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x03E8
+st r2, r0
+add r0, r1
+
+ldi r2, 0x03E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x13E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x23E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x33E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x43E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x53E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x63E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x73E0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7FE0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7F80
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7F20
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7EC0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7E60
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7E00
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7DA0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7D40
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7CE0
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C80
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C40
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C00
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C08
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C10
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C18
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x6C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x5C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x4C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x3C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x2C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x1C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x0C1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x1C7F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x2CDF
+st r2, r0
+add r0, r1
+
+ldi r2, 0x3D3F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x4D9F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x5DFF
+st r2, r0
+add r0, r1
+
+ldi r2, 0x6E5F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7EBF
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7F1F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7F5F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7F9F
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7FDF
+st r2, r0
+add r0, r1
+
+ldi r2, 0x7FFF
+st r2, r0
+add r0, r1
+
+ldi r2, 0x0000
+st r2, r0
+
+pop r2
+pop r1
+pop r0
 ret
