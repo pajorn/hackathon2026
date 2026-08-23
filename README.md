@@ -3,8 +3,8 @@ a 16-bit computer built from scratch: cpu, memory, gpu, 128x128 display, assembl
 
 requires sdl2 and python3. \
     cd emulator && make \
-    python3 ../assembler/assembler.py ../programs/screen.asm \
-    ./emulator ../programs/screen.bin \
+    python3 ../assembler/assembler.py ../programs/mandelbrot.asm \
+    ./emulator ../programs/mandelbrot.bin 
 
 ## memory 
 | range | use |
