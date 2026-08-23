@@ -1,8 +1,9 @@
 *.o
 *.gch
 *.swp
-pajorn
-josiah
 *.pch
 *.bin
 .DS_Store
+/emulator/emulator
+/emulator/josiah
+/emulator/pajorn

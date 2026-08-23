@@ -1,4 +1,20 @@
-# computer/processor emulator with display output + assembler thing ??
+# 16-bit computer emulator
+a 16-bit computer built from scratch: cpu, memory, gpu, 128x128 display, assembler to write programs, and a visualiser that shows the machine running.
+
+requires sdl2 and python3.
+    cd emulator && make \
+    python3 ../assembler/assembler.py ../programs/screen.asm \
+    ./emulator ../programs/screen.bin \
+
+## memory 
+| range | use |
+|-------|-----|
+| `0000` – `7FFF` | program and data                         |
+| `8000` – `BFFF` | stack   |
+| `C000` – `FFFF` | gpu, framebuffer, 128×128|
+
+## pixel format
+16 bits, rgb555: `? rrrrr ggggg bbbbb`. bit 15 (?) unused
 
 ## Instruction Set
 |Instruction|Something|
@@ -29,43 +45,10 @@
 |lsr r1, 0x???? | r1 = r1 >> 0x????
 |mul r1, r2 | r1 = r1 * r2
 
-## Pixel Format
-2 bytes. xrrr rrgg gggb bbbb
+## layout
 
-## tree
-.
-├── assembler \
-│   └── assembler.py \
-├── emulator \
-│   ├── Computer.cpp \
-│   ├── Computer.h \
-│   ├── Decoder.cpp \
-│   ├── Decoder.h \
-│   ├── emulator \
-│   ├── font8x8_basic.h \
-│   ├── GPU.cpp \
-│   ├── GPU.h \
-│   ├── josiah.cpp \
-│   ├── main.cpp \
-│   ├── Makefile \
-│   ├── Memory.cpp \
-│   ├── Memory.h \
-│   ├── pajorn.cpp \
-│   ├── Registers.cpp \
-│   ├── Registers.h \
-│   ├── Visualiser.cpp \
-│   └── Visualiser.h \
-├── instruction_set \
-├── programs \
-│   ├── cellular_automata.asm \
-│   ├── screen.asm \
-│   └── test.asm \
-└── README.md 
+    assmbler/ assmbler
+    emulator/ C++ source, Makefile
+    programs/ some assembly programs
 
-## controls
-| key     | function                      |
-|---------|-------------------------------|
-| `space` | pause/resume                  |
-| `.`     | step one instruction (paused) |
-| `r`     | restart program               |
-| `esc`   | quit                          |
+
