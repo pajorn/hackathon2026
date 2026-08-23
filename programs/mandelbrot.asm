@@ -33,7 +33,7 @@ loop:
 jmp loop
 
 
-calc_pixel:
+calc_pixel:	; this function was co-written with an LLM
 push r6
 push r7
 push r8
