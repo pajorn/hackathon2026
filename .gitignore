@@ -1,7 +1,6 @@
 *.o
 *.gch
 *.swp
-emulator
 pajorn
 josiah
 *.pch

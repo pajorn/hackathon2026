@@ -21,7 +21,7 @@ bool GPU::init() {
     sdlReady_ = true;
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
 
-    window_ = SDL_CreateWindow("emulator", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH * scale_, HEIGHT * scale_, SDL_WINDOW_SHOWN);
+    window_ = SDL_CreateWindow("emulator", 100, 200, WIDTH * scale_, HEIGHT * scale_, SDL_WINDOW_SHOWN);
     if (!window_) {
         fprintf(stderr, "SDL_CreateWindow failure: %s\n", SDL_GetError());
         return false;

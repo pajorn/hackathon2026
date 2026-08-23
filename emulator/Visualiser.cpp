@@ -31,7 +31,7 @@ Visualiser::~Visualiser() {
 }
 
 bool Visualiser::init() {
-    window_ = SDL_CreateWindow("visualiser", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    window_ = SDL_CreateWindow("visualiser", 700, 100,
             W * scale_, H * scale_, SDL_WINDOW_SHOWN);
     if (!window_) return false;
     render_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED);
@@ -150,6 +150,11 @@ void Visualiser::drawCode(Registers& reg, Memory& mem) {
 void Visualiser::draw(Registers& reg, Memory& mem, bool paused) {
     clear(C_BG);
     drawActivity(mem);
+
+    uint16_t ip = reg.getIP();
+    int ix = ACT_X + (ip & 0xFF), iy = ACT_Y + (ip >> 8);
+    for (int d = -1; d <= 1; d++) { px(ix + d, iy, C_IP); px(ix, iy + d, C_IP); } // change d range for pixel size
+
     drawRegisters(reg);
     drawStack(reg, mem);
     drawCode(reg, mem);
