@@ -18,6 +18,10 @@ static const uint16_t C_SP    = 0x03FF;   // cyan
 static const uint16_t C_IP    = 0x7C00;   // red
 static const uint16_t C_HOT   = 0x7FFF;   // white
 
+
+// ip pointer pixel sizze shit
+static const int IP_PIXEL = 2;
+
 Visualiser::Visualiser(int scale)
     : scale_(scale), window_(nullptr), render_(nullptr), texture_(nullptr), buf_{} {
         memset(prevGP_, 0, sizeof prevGP_);
@@ -31,7 +35,7 @@ Visualiser::~Visualiser() {
 }
 
 bool Visualiser::init() {
-    window_ = SDL_CreateWindow("visualiser", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+    window_ = SDL_CreateWindow("visualiser", 700, 100,
             W * scale_, H * scale_, SDL_WINDOW_SHOWN);
     if (!window_) return false;
     render_ = SDL_CreateRenderer(window_, -1, SDL_RENDERER_ACCELERATED);
@@ -150,8 +154,12 @@ void Visualiser::drawCode(Registers& reg, Memory& mem) {
 void Visualiser::draw(Registers& reg, Memory& mem, bool paused) {
     clear(C_BG);
     drawActivity(mem);
+
+    uint16_t ip = reg.getIP();
+    int ix = ACT_X + (ip & 0xFF), iy = ACT_Y + (ip >> 8);
+    for (int d = -IP_PIXEL; d <= IP_PIXEL; d++) { px(ix + d, iy, C_IP); px(ix, iy + d, C_IP); } // change d range for pixel size
+
     drawRegisters(reg);
-    drawStack(reg, mem);
     drawCode(reg, mem);
     if (paused) drawText(W - 8 * 7, H - 12, "pause", C_FLASH);
     SDL_UpdateTexture(texture_, nullptr, buf_, W * sizeof(uint16_t));

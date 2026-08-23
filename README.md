@@ -31,3 +31,41 @@
 
 ## Pixel Format
 2 bytes. xrrr rrgg gggb bbbb
+
+## tree
+.
+├── assembler \
+│   └── assembler.py \
+├── emulator \
+│   ├── Computer.cpp \
+│   ├── Computer.h \
+│   ├── Decoder.cpp \
+│   ├── Decoder.h \
+│   ├── emulator \
+│   ├── font8x8_basic.h \
+│   ├── GPU.cpp \
+│   ├── GPU.h \
+│   ├── josiah.cpp \
+│   ├── main.cpp \
+│   ├── Makefile \
+│   ├── Memory.cpp \
+│   ├── Memory.h \
+│   ├── pajorn.cpp \
+│   ├── Registers.cpp \
+│   ├── Registers.h \
+│   ├── Visualiser.cpp \
+│   └── Visualiser.h \
+├── instruction_set \
+├── programs \
+│   ├── cellular_automata.asm \
+│   ├── screen.asm \
+│   └── test.asm \
+└── README.md 
+
+## controls
+| key     | function                      |
+|---------|-------------------------------|
+| `space` | pause/resume                  |
+| `.`     | step one instruction (paused) |
+| `r`     | restart program               |
+| `esc`   | quit                          |

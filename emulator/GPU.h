@@ -20,6 +20,9 @@ public:
 
     void pollEvents();
     bool shouldQuit();
+    bool pause = false;
+    bool step = false;
+    bool restart = false;
 
     void drawFrame(Memory* memory);
     void present(uint16_t* pixels);
