@@ -18,6 +18,10 @@ static const uint16_t C_SP    = 0x03FF;   // cyan
 static const uint16_t C_IP    = 0x7C00;   // red
 static const uint16_t C_HOT   = 0x7FFF;   // white
 
+
+// ip pointer pixel sizze shit
+static const int IP_PIXEL = 2;
+
 Visualiser::Visualiser(int scale)
     : scale_(scale), window_(nullptr), render_(nullptr), texture_(nullptr), buf_{} {
         memset(prevGP_, 0, sizeof prevGP_);
@@ -153,10 +157,9 @@ void Visualiser::draw(Registers& reg, Memory& mem, bool paused) {
 
     uint16_t ip = reg.getIP();
     int ix = ACT_X + (ip & 0xFF), iy = ACT_Y + (ip >> 8);
-    for (int d = -1; d <= 1; d++) { px(ix + d, iy, C_IP); px(ix, iy + d, C_IP); } // change d range for pixel size
+    for (int d = -IP_PIXEL; d <= IP_PIXEL; d++) { px(ix + d, iy, C_IP); px(ix, iy + d, C_IP); } // change d range for pixel size
 
     drawRegisters(reg);
-    drawStack(reg, mem);
     drawCode(reg, mem);
     if (paused) drawText(W - 8 * 7, H - 12, "pause", C_FLASH);
     SDL_UpdateTexture(texture_, nullptr, buf_, W * sizeof(uint16_t));
