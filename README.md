@@ -1,5 +1,5 @@
 # 16-bit computer emulator
-a 16-bit computer built from pure logic: cpu, memory, gpu, 128x128 display, assembler to write programs, and a visualiser that shows the machine running.
+a 16-bit computer built from scratch: cpu, memory, gpu, 128x128 display, assembler to write programs, and a visualiser that shows the machine running.
 
 requires sdl2 and python3.
     cd emulator && make
