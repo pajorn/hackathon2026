@@ -22,7 +22,8 @@ operations = {"nop": 0,
               "xor": 17,
               "lsl": 18,
               "lsr": 19,
-              "mul": 20}
+              "mul": 20,
+              "mulh": 21}
 
 
 def read_file(fname: str) -> list[str]:
@@ -102,6 +103,8 @@ def set_addrImm(opr: str, r1: int, r2: int, addrImm1: int,
     elif opr == "lsr":
         out = addrImm2
     elif opr == "mul":
+        pass
+    elif opr == "mulh":
         pass
 
     return out

@@ -26,7 +26,8 @@ enum class Operation : uint8_t {
     ExclusiveOr = 17,
     ShiftLeft = 18,
     ShiftRight = 19,
-    Multiply = 20
+    Multiply = 20,
+    MultiplyHigh = 21
 };
 
 struct InstructionData {

@@ -104,8 +104,20 @@ void Decoder::execute(InstructionData data, Memory* mem, Registers* reg) {
 	case Operation::ShiftRight:
 	    reg->setGP(data.r1, reg->getGP(data.r1) >> data.addrImm);
 	    break;
-	case Operation::Multiply:
-	    reg->setGP(data.r1, reg->getGP(data.r1) * reg->getGP(data.r2));
+	case Operation::Multiply: {
+	    int32_t val1 = static_cast<int16_t>(reg->getGP(data.r1));
+	    int32_t val2 = static_cast<int16_t>(reg->getGP(data.r2));
+	    uint32_t prod = static_cast<uint32_t>(val1 * val2);
+	    reg->setGP(data.r1, (uint16_t)(prod & 0x0000FFFF));
+	    break;
+	    }
+	case Operation::MultiplyHigh: {
+	    int32_t vl1 = static_cast<int16_t>(reg->getGP(data.r1));
+	    int32_t vl2 = static_cast<int16_t>(reg->getGP(data.r2));
+	    uint32_t prd = static_cast<uint32_t>(vl1 * vl2);
+	    reg->setGP(data.r1, (uint16_t)(prd >> 16));
+	    break;
+	    }
     }
 }
 
